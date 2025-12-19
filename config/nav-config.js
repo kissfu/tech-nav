@@ -802,3 +802,9 @@ let navData = {
     ]
   }
 };
+
+// 合并从 site-nav-data.js 迁移来的数据
+// 这确保了数据的解耦，并允许两个配置文件独立维护
+// 通过将 siteNavData放在前面，确保“聊吧”类别优先显示
+navData = Object.assign({}, siteNavData, navData);
+
