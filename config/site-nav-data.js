@@ -138,6 +138,14 @@ const siteNavData = {
         desc: "收费。想和她来一场甜甜蜜蜜的毕业旅行可是要写论文没时间怎么办？笔灵来帮你轻松搞定论文！",
         url: "https://ibiling.cn/paper/biyeyushou?share_sign=1qw6yt"
       }
+    ],
+    "AI编程": [
+      {
+        logoUrl: "https://www.wc.pub/wc.png",
+        title: "OpenCode 中文教程 ",
+        desc: "OpenCode 中文教程 30分钟教会您。",
+        url: "https://learnopencode.com/"
+      },
     ]
   }
 };
