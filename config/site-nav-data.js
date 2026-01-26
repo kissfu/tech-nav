@@ -153,6 +153,12 @@ const siteNavData = {
         title: "EngLearner",
         desc: "EngLearner - 英语学习工具导航网站 - 学英语不求人",
         url: "https://www.englearner.site/cn/index.html"
+      },
+      {
+        logoUrl: "https://typewords.cc/favicon.ico",
+        title: "Type Words",
+        desc: "Type Words - 词文记 | 单词跟打 · 文章跟打",
+        url: "https://typewords.cc/"
       }
     ],
     "新闻": [
