@@ -115,6 +115,12 @@ const siteNavData = {
         title: "iFixit",
         desc: "iFixit 是一个以维修为主题的全球性互助社区。从一个一个的设备开始，让我们来一步一个脚印一点一点的修复这个世界。你可以在问题解答论坛和专家一起互动——还可以创建并与全世界分享由你编篡的维修手册。你可以在这里买到所有关于你的 DIY 维修计划的配件及工具，帮助修复好你的苹果或安卓设备。",
         url: "https://zh.ifixit.com"
+      },
+      {
+        logoUrl: "https://www.wc.pub/wc.png",
+        title: "wechat-article",
+        desc: "wechat-article 公众号文章下载神器一款 开源 & 免费 的公众号文章下载神器",
+        url: "https://docs.mptext.top/"
       }
     ],
     "数据": [
