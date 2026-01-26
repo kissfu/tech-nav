@@ -127,6 +127,12 @@ const siteNavData = {
         title: "localsend",
         desc: "localsend-文件互传，有网页版和应用版本，跨平台。无需云端即可分享文件。快速、私密、离线。面向所有人的开源跨平台文件共享",
         url: "https://localsend.org/"
+      },
+      {
+        logoUrl: "https://www.wc.pub/wc.png",
+        title: "小智AI",
+        desc: "小智AI是-开源 AI 操作系统 / ESP32 语音机器人版小智 AI 官网",
+        url: "https://xiaozhi.me/"
       }
     ],
     "数据": [
