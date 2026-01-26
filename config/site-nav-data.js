@@ -142,10 +142,32 @@ const siteNavData = {
     "AI编程": [
       {
         logoUrl: "https://www.wc.pub/wc.png",
-        title: "OpenCode 中文教程 ",
+        title: "OpenCode 中文教程",
         desc: "OpenCode 中文教程 30分钟教会您。",
         url: "https://learnopencode.com/"
       },
+    ],
+    "英语": [
+      {
+        logoUrl: "https://00388388.xyz/asset/image/favicon.ico",
+        title: "EngLearner",
+        desc: "EngLearner - 英语学习工具导航网站 - 学英语不求人",
+        url: "https://www.englearner.site/cn/index.html"
+      }
+    ],
+    "新闻": [
+      {
+        logoUrl: "https://www.wc.pub/wc.png",
+        title: "situation-monitor",
+        desc: "situation-monitor - 关于 用于监控全球新闻、市场动态及地缘政治事件的实时仪表盘",
+        url: "https://hipcityreg-situation-monitor.vercel.app/"
+      },
+      {
+        logoUrl: "https://www.wc.pub/wc.png",
+        title: "TrendRadar",
+        desc: "TrendRadar - 一键监控今日头条、百度热搜、微博、抖音、知乎、B站等35个平台，智能关键词筛选，自动生成热点分析报告。支持企业微信、飞书、钉钉、Telegram推送，30秒网页部署，1分钟手机通知，无需编程基础。还有文字和图片版api可调用",
+        url: "https://news.fengpt.eu.org/"
+      }
     ]
   }
 };
