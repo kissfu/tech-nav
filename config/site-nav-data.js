@@ -133,6 +133,12 @@ const siteNavData = {
         title: "小智AI",
         desc: "小智AI是-开源 AI 操作系统 / ESP32 语音机器人版小智 AI 官网",
         url: "https://xiaozhi.me/"
+      },
+      {
+        logoUrl: "https://oshwhub.com/favicon.ico",
+        title: "嘉立创开源硬件平台",
+        desc: "基于嘉立创EDA进行电路设计的硬件开源设计大本营,集嵌入式、电子模块、DIY设计、物联网、智能硬件、电子应用、电工电子等多种电路设计模块为一体的开源硬件平台",
+        url: "https://oshwhub.com/"
       }
     ],
     "数据": [
