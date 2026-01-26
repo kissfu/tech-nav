@@ -121,6 +121,12 @@ const siteNavData = {
         title: "wechat-article",
         desc: "wechat-article 公众号文章下载神器一款 开源 & 免费 的公众号文章下载神器",
         url: "https://docs.mptext.top/"
+      },
+      {
+        logoUrl: "https://www.wc.pub/wc.png",
+        title: "localsend",
+        desc: "localsend-文件互传，有网页版和应用版本，跨平台。无需云端即可分享文件。快速、私密、离线。面向所有人的开源跨平台文件共享",
+        url: "https://localsend.org/"
       }
     ],
     "数据": [
