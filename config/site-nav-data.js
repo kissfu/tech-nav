@@ -170,6 +170,18 @@ const siteNavData = {
         desc: "OpenCode 中文教程 30分钟教会您。",
         url: "https://learnopencode.com/"
       },
+      {
+        logoUrl: "https://4sapi.com/logo.png",
+        title: "4sAPI",
+        desc: "支撑上市企业AI 规模化落地,4sAPI 为企业提供安全、高性能、可合规配置的大模型集成网关。支持私有化部署、高并发处理及细粒度权限管控。",
+        url: "https://4sapi.com/register?aff=fORL"
+      },
+      {
+        logoUrl: "https://api.lingyaai.cn/logo.png",
+        title: "灵芽API",
+        desc: "我们已为数千家企业和个人用户提供服务。在本站购买API-Key后，您无需复杂的操作，即可轻松享受GPT、Claude、Gemini、Llama等国际领先大模型的强大功能！我们的服务稳定可靠（平均稳定性达到99%），价格合理，API质量在业内处于领先水平。",
+        url: "https://api.lingyaai.cn/register?aff=tPRt"
+      }
     ],
     "英语": [
       {
