@@ -241,6 +241,47 @@
         transform: translate(0%, -50%) rotate(-25deg);
       }
 
+      /* 文字角标：赞助 / 推荐 / 合作 等商业位标记 */
+      .nav-badge {
+        position: absolute;
+        top: 9px;
+        right: 2.5rem;
+        z-index: 6;
+        padding: 2px 8px;
+        font-size: 11px;
+        line-height: 1.4;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border-radius: 9999px;
+        pointer-events: none;
+        user-select: none;
+        white-space: nowrap;
+        backdrop-filter: blur(4px);
+      }
+      /* 推荐：主题蓝 */
+      .nav-badge.recommended {
+        color: #58a6ff;
+        background: rgba(88, 166, 255, 0.12);
+        border: 1px solid rgba(88, 166, 255, 0.5);
+        box-shadow: 0 0 8px rgba(88, 166, 255, 0.25);
+      }
+      /* 赞助：金色，更醒目 */
+      .nav-badge.sponsored {
+        color: #f5c451;
+        background: rgba(245, 196, 81, 0.12);
+        border: 1px solid rgba(245, 196, 81, 0.55);
+        box-shadow: 0 0 8px rgba(245, 196, 81, 0.3);
+      }
+      /* 赞助卡片整体微光，便于运营位区分 */
+      .nav-card.is-sponsored {
+        border-color: rgba(245, 196, 81, 0.35);
+      }
+      .nav-card.is-sponsored:hover {
+        border-color: rgba(245, 196, 81, 0.6);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
+          0 0 15px rgba(245, 196, 81, 0.35);
+      }
+
       .search-input {
         background-color: var(--card-bg-color);
         border: 1px solid var(--border-color);
@@ -669,20 +710,21 @@
       })();
 
       // 统一的出站点击统计：上报到 GA4 / 百度统计，并在本地累计计数（兜底）
-      window.trackOutboundClick = function (title, url, category) {
+      window.trackOutboundClick = function (title, url, category, sponsored) {
         try {
           if (typeof window.gtag === "function") {
             window.gtag("event", "outbound_click", {
               link_title: title,
               link_url: url,
               link_category: category || "",
+              is_sponsored: !!sponsored,
               transport_type: "beacon",
             });
           }
           if (window._hmt) {
             window._hmt.push([
               "_trackEvent",
-              "outbound",
+              sponsored ? "outbound_sponsored" : "outbound",
               "click",
               (category ? category + " / " : "") + title,
             ]);
@@ -1317,7 +1359,7 @@
               r.className = getGridClassString();
               
               if (navData[d][subCategory] && Array.isArray(navData[d][subCategory])) {
-                navData[d][subCategory].forEach((navItem) => {
+                sortNavItems(navData[d][subCategory]).forEach((navItem) => {
                   r.appendChild(createNavCard(navItem));
                 });
               }
@@ -1349,7 +1391,7 @@
             r.className = getGridClassString();
             
             if (navData[d] && Array.isArray(navData[d])) {
-              navData[d].forEach((navItem) => {
+              sortNavItems(navData[d]).forEach((navItem) => {
                 r.appendChild(createNavCard(navItem));
               });
             }
@@ -1383,16 +1425,36 @@
         };
       }
 
+      // 分类内置顶排序：rank 升序优先，其次赞助位优先，其余保持原顺序（稳定排序）
+      function sortNavItems(items) {
+        if (!Array.isArray(items)) return items;
+        return items
+          .map((item, idx) => ({ item, idx }))
+          .sort((a, b) => {
+            const ra = typeof a.item.rank === "number" ? a.item.rank : Infinity;
+            const rb = typeof b.item.rank === "number" ? b.item.rank : Infinity;
+            if (ra !== rb) return ra - rb;
+            const sa = a.item.sponsored === true ? 0 : 1;
+            const sb = b.item.sponsored === true ? 0 : 1;
+            if (sa !== sb) return sa - sb;
+            return a.idx - b.idx;
+          })
+          .map((x) => x.item);
+      }
+
       function createNavCard(c) {
         const o = document.createElement("div");
-        (o.className = "nav-card group flex space-x-4 py-6 pr-6"),
+        const isSponsored = c.sponsored === true;
+        (o.className =
+          "nav-card group flex space-x-4 py-6 pr-6" +
+          (isSponsored ? " is-sponsored" : "")),
           (o.dataset.name = c.title.toLowerCase()),
           (o.dataset.navId = c.title),
           (o.dataset.keywords = (c.keywords + " " + c.title).toLowerCase()),
           o.addEventListener("click", (o) => {
             if (o.target.closest(".favorite-btn")) return;
             if (typeof window.trackOutboundClick === "function") {
-              window.trackOutboundClick(c.title, c.url, c.category);
+              window.trackOutboundClick(c.title, c.url, c.category, isSponsored);
             }
             window.open(c.url, "_blank");
           });
@@ -1431,11 +1493,22 @@
           o.classList.add('highlighted');
         }
 
-        // 添加推荐标签支持
+        // 添加推荐标签支持（原 PNG 水印）
         if (c.recommended === true) {
           const recommendedBadge = document.createElement('div');
           recommendedBadge.className = 'recommended-badge';
           o.appendChild(recommendedBadge);
+        }
+
+        // 文字角标：赞助 / 推荐 / 合作 等商业位标记
+        // 优先使用自定义 c.badge 文案；否则按 sponsored 自动显示「赞助」
+        const badgeText = c.badge || (isSponsored ? "赞助" : "");
+        if (badgeText) {
+          const badge = document.createElement("div");
+          badge.className =
+            "nav-badge " + (isSponsored ? "sponsored" : "recommended");
+          badge.textContent = badgeText;
+          o.appendChild(badge);
         }
 
         // 全局tooltip管理器

@@ -88,7 +88,9 @@ const siteNavData = {
         logoUrl: "https://cloud.siliconflow.cn/favicon.ico",
         title: "硅基流动",
         desc: "基于优秀的开源模型，提供高性价比的 GenAI 云服务.文本对话 · 图像生成 · 视频生成 · 语音合成",
-        url: "https://cloud.siliconflow.cn/i/MU6sa7EJ"
+        url: "https://cloud.siliconflow.cn/i/MU6sa7EJ",
+        sponsored: true,
+        badge: "赞助"
       },
       {
         logoUrl: "https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico",
