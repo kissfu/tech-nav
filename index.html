@@ -632,6 +632,83 @@
         border-bottom-width: 8px;
       }
     </style>
+
+    <!-- ==================== 网站统计与点击埋点 ==================== -->
+    <script>
+      // 在这里填入你的统计 ID 即可启用对应平台，留空则不加载。
+      window.SITE_ANALYTICS = {
+        ga4Id: "G-R0528T9ZQW", // Google Analytics 4，如 "G-XXXXXXXXXX"
+        baiduId: "a0205b7de0d7cc44a1a95a4fcf2b88c5", // 百度统计，hm.js 后面的那串 id，如 "abcdef0123456789abcdef0123456789"
+      };
+
+      (function initAnalytics() {
+        const cfg = window.SITE_ANALYTICS || {};
+
+        // Google Analytics 4
+        if (cfg.ga4Id) {
+          const s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.googletagmanager.com/gtag/js?id=" + cfg.ga4Id;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () {
+            window.dataLayer.push(arguments);
+          };
+          window.gtag("js", new Date());
+          window.gtag("co nfig", cfg.ga4Id);
+        }
+
+        // 百度统计
+        if (cfg.baiduId) {
+          window._hmt = window._hmt || [];
+          const hm = document.createElement("script");
+          hm.async = true;
+          hm.src = "https://hm.baidu.com/hm.js?" + cfg.baiduId;
+          document.head.appendChild(hm);
+        }
+      })();
+
+      // 统一的出站点击统计：上报到 GA4 / 百度统计，并在本地累计计数（兜底）
+      window.trackOutboundClick = function (title, url, category) {
+        try {
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "outbound_click", {
+              link_title: title,
+              link_url: url,
+              link_category: category || "",
+              transport_type: "beacon",
+            });
+          }
+          if (window._hmt) {
+            window._hmt.push([
+              "_trackEvent",
+              "outbound",
+              "click",
+              (category ? category + " / " : "") + title,
+            ]);
+          }
+          // 本地兜底计数：未接入第三方时也能在控制台查看各工具点击量
+          const KEY = "nav_click_stats";
+          const stats = JSON.parse(localStorage.getItem(KEY) || "{}");
+          const k = title || url;
+          stats[k] = (stats[k] || 0) + 1;
+          localStorage.setItem(KEY, JSON.stringify(stats));
+        } catch (e) {
+          /* 统计失败不影响跳转 */
+        }
+      };
+
+      // 便捷查看本地点击统计：控制台执行 showNavClickStats()
+      window.showNavClickStats = function () {
+        const stats = JSON.parse(
+          localStorage.getItem("nav_click_stats") || "{}"
+        );
+        const sorted = Object.entries(stats).sort((a, b) => b[1] - a[1]);
+        console.table(sorted.map(([name, count]) => ({ 工具: name, 点击量: count })));
+        return stats;
+      };
+    </script>
+    <!-- ==================== 统计与点击埋点 结束 ==================== -->
   </head>
   <body class="min-h-screen text-sm md:text-base">
     <div class="flex">
@@ -1314,6 +1391,9 @@
           (o.dataset.keywords = (c.keywords + " " + c.title).toLowerCase()),
           o.addEventListener("click", (o) => {
             if (o.target.closest(".favorite-btn")) return;
+            if (typeof window.trackOutboundClick === "function") {
+              window.trackOutboundClick(c.title, c.url, c.category);
+            }
             window.open(c.url, "_blank");
           });
 
