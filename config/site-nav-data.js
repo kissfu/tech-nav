@@ -83,7 +83,7 @@ const siteNavData = {
         url: "https://tv.garden/"
       }
     ],
-    "中介": [
+    "模型API": [
       {
         logoUrl: "https://cloud.siliconflow.cn/favicon.ico",
         title: "硅基流动",
@@ -181,6 +181,12 @@ const siteNavData = {
         title: "灵芽API",
         desc: "我们已为数千家企业和个人用户提供服务。在本站购买API-Key后，您无需复杂的操作，即可轻松享受GPT、Claude、Gemini、Llama等国际领先大模型的强大功能！我们的服务稳定可靠（平均稳定性达到99%），价格合理，API质量在业内处于领先水平。",
         url: "https://api.lingyaai.cn/register?aff=tPRt"
+      },
+      {
+        logoUrl: "https://api.lingyaai.cn/logo.png",
+        title: "灵芽API",
+        desc: "我们已为数千家企业和个人用户提供服务。在本站购买API-Key后，您无需复杂的操作，即可轻松享受GPT、Claude、Gemini、Llama等国际领先大模型的强大功能！我们的服务稳定可靠（平均稳定性达到99%），价格合理，API质量在业内处于领先水平。",
+        url: "https://lovable.dev/invite/KEK4XZG"
       }
     ],
     "英语": [
@@ -209,6 +215,48 @@ const siteNavData = {
         title: "TrendRadar",
         desc: "TrendRadar - 一键监控今日头条、百度热搜、微博、抖音、知乎、B站等35个平台，智能关键词筛选，自动生成热点分析报告。支持企业微信、飞书、钉钉、Telegram推送，30秒网页部署，1分钟手机通知，无需编程基础。还有文字和图片版api可调用",
         url: "https://news.fengpt.eu.org/"
+      }
+    ],
+    "算力服务": [
+      {
+        logoUrl: "https://cephalon.cloud/favicon.ico",
+        title: "端脑云",
+        desc: "云端 GPU 平台，热门镜像一键用：ComfyUI、Jupyter、TTS、SD 等。支持工作流运行、镜像/模型管理与 API 调用，按量计费；新用户注册赠送脑力值，适合日常创作与训练。",
+        url: "https://cephalon.cloud/"
+      },
+      {
+        logoUrl: "https://www.xiangongyun.com/favicon.ico",
+        title: "仙宫云",
+        desc: "高性能云端 GPU 平台，支持 ComfyUI 镜像与工作流，一键部署训练/推理；提供镜像市场、模型管理与控制台监控，弹性计费，适合创作与生产环境。",
+        url: "https://www.xiangongyun.com/"
+      },
+      {
+        logoUrl: "https://www.runninghub.cn/favicon.ico",
+        title: "RunningHub",
+        desc: "基于云端 GPU 的 ComfyUI 平台：在线运行与发布 AI 应用/工作流，支持模型库上传、个人工作台与 API 调用（24G/48G）。每日赠送 RH Coins，新手上手快。",
+        url: "https://www.runninghub.cn/"
+      }
+    ],
+    "AI绘画": [
+      {
+        logoUrl: "https://www.liblib.art/favicon.ico",
+        title: "LiblibAI",
+        desc: "解锁会员，获得更快队列、高清大图与更高并发，在线生图效率更高。内含模型/提示词社区与作品广场，适合日常创作与素材产出。",
+        url: "https://www.liblib.art/"
+      }
+    ],
+    "模型库": [
+      {
+        logoUrl: "https://civitai.com/favicon.ico",
+        title: "Civitai 模型库",
+        desc: "最大的 Stable Diffusion / SDXL 模型社区：Checkpoint、LoRA、ControlNet 等一站下载，带版本、示例与评分，便于快速选型与复现工作流。",
+        url: "https://civitai.com/"
+      },
+      {
+        logoUrl: "https://huggingface.co/favicon.ico",
+        title: "Hugging Face",
+        desc: "全球最大的模型与数据集社区：Transformers、Diffusers、LLM、SDXL 等。提供 Spaces 托管、Inference Endpoints 与评测基准，便于快速部署与对比。",
+        url: "https://huggingface.co/"
       }
     ]
   }
