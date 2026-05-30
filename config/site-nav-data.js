@@ -230,7 +230,7 @@ const siteNavData = {
         logoUrl: "https://www.xiangongyun.com/favicon.ico",
         title: "仙宫云",
         desc: "高性能云端 GPU 平台，支持 ComfyUI 镜像与工作流，一键部署训练/推理；提供镜像市场、模型管理与控制台监控，弹性计费，适合创作与生产环境。",
-        url: "https://www.xiangongyun.com/"
+        url: "https://www.xiangongyun.com/register/XSHB8A"
       },
       {
         logoUrl: "https://www.runninghub.cn/favicon.ico",
